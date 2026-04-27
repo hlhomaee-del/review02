@@ -322,10 +322,10 @@ const quiz = [
   {
     question:'Which diagnosis choice best follows the pathology language for the colon lesion?',
     options:[
-      'Neoplasm behavior supported by pathology, ascending colon',
-      'Malignant neoplasm, ascending colon',
-      'Carcinoma in situ, ascending colon',
-      'Positive fecal occult blood finding'
+      'Neoplasm behavior supported by pathology, ascending colon, based on submitted tissue',
+      'Malignant neoplasm, ascending colon, based on the provider’s concern for cancer',
+      'Carcinoma in situ, ascending colon, based on the high-grade dysplasia wording',
+      'Positive fecal occult blood finding, based on the abnormal stool test result'
     ],
     correct:0,
     evidence:['ruleout','behavior'],
@@ -335,10 +335,10 @@ const quiz = [
   {
     question:'Before selecting a diagnosis, which reasoning sequence is strongest?',
     options:[
-      'Identify confirmed wording → evaluate the malignancy wording → locate neoplasm by site → choose behavior from documentation → verify final code.',
-      'Use the suspected diagnosis first because this is outpatient → locate malignancy by site → add pathology language afterward → verify final code.',
-      'Begin with the most definitive body site → select the colon subsite first → choose the most clinically concerning behavior → verify final code.',
-      'Start with the procedure history → connect biopsy to the lesion → choose the planned surgical outcome → verify final code.'
+      'Identify confirmed wording → evaluate malignancy wording → locate neoplasm site → choose behavior → verify code',
+      'Use suspected wording → locate malignancy by site → add pathology later → choose behavior → verify code',
+      'Begin with body site → select colon subsite → choose most serious behavior → add pathology → verify code',
+      'Start with procedure history → connect biopsy to lesion → choose planned outcome → add site → verify code'
     ],
     correct:0,
     evidence:['ruleout','behavior'],
@@ -348,10 +348,10 @@ const quiz = [
   {
     question:'Which answer best explains why “neoplasm of uncertain behavior, ascending colon” is stronger than “malignant neoplasm, ascending colon” here?',
     options:[
-      'The pathology describes behavior that cannot be predicted, while malignancy remains unconfirmed.',
-      'The provider ordered surgery, and all lesions sent to surgery are coded as uncertain behavior.',
-      'The patient has anemia, and anemia automatically changes colon lesions to uncertain behavior.',
-      'The payer paid part of the claim, which proves the diagnosis category selected was correct.'
+      'Pathology says behavior cannot be predicted, while malignancy is still not confirmed',
+      'Surgery is requested after review, so the lesion becomes uncertain behavior',
+      'Anemia is documented, so the colon lesion changes to uncertain behavior',
+      'The payer made payment, so the selected diagnosis category must be correct'
     ],
     correct:0,
     evidence:['behavior','ruleout'],
@@ -361,10 +361,10 @@ const quiz = [
   {
     question:'Which coder shows the best main term and subterm logic instead of memorizing an index clue?',
     options:[
-      'Coder A: “I would begin with Neoplasm, then narrow by colon/ascending colon, then select behavior from the documentation.”',
-      'Coder B: “I would begin with Ascending because the anatomic modifier establishes the subsite before the condition.”',
-      'Coder C: “I would begin with Dysplasia because the histologic descriptor is the most clinically salient term in the report.”',
-      'Coder D: “I would begin with Surgery because the planned definitive intervention frames the encounter purpose.”'
+      'Coder A: “Begin with Neoplasm, narrow to colon/ascending colon, then select documented behavior.”',
+      'Coder B: “Begin with Ascending, because the anatomic modifier establishes the needed subsite.”',
+      'Coder C: “Begin with Dysplasia, because the histologic descriptor drives the report meaning.”',
+      'Coder D: “Begin with Surgery, because the planned intervention frames the encounter purpose.”'
     ],
     correct:0,
     evidence:['behavior'],
@@ -374,10 +374,10 @@ const quiz = [
   {
     question:'The coder must choose among in situ, uncertain behavior, unspecified behavior, and malignant behavior. Which reasoning is most defensible?',
     options:[
-      'Choose uncertain behavior because the note says behavior cannot be predicted and carcinoma is not identified.',
-      'Choose in situ because high-grade dysplasia is commonly treated as a preinvasive malignant category.',
-      'Choose unspecified behavior because the provider did not place a complete code in the A/P line.',
-      'Choose malignant behavior because the referral language implies a serious oncologic concern.'
+      'Choose uncertain behavior because behavior cannot be predicted and carcinoma is not identified',
+      'Choose in situ because high-grade dysplasia often suggests a preinvasive malignant process',
+      'Choose unspecified behavior because a complete code is not written in the A/P line',
+      'Choose malignant behavior because referral language implies serious oncologic concern'
     ],
     correct:0,
     evidence:['behavior','ruleout'],
@@ -387,10 +387,10 @@ const quiz = [
   {
     question:'A medical biller says, “The state plan is active, so bill it first because it will probably cover the patient.” What is the best correction?',
     options:[
-      'Active coverage is not the same as primary coverage; determine COB before choosing the billing order.',
-      'State assistance should be billed first when eligibility is active on the date of service.',
-      'The state plan may be billed first if the spouse plan has a higher patient cost-share.',
-      'State assistance should be ignored completely because commercial coverage also exists.'
+      'Active coverage is not primary coverage; determine COB before choosing billing order',
+      'State assistance is billed first whenever eligibility is active on the service date',
+      'State assistance can be billed first if the spouse plan has higher cost-sharing',
+      'State assistance should be ignored entirely when commercial coverage exists'
     ],
     correct:0,
     evidence:['cob'],
@@ -400,10 +400,10 @@ const quiz = [
   {
     question:'Based on the scattered registration details, which sequence is most defensible and why?',
     options:[
-      'Patient employer plan first because she is subscriber; spouse plan second because she is dependent; state assistance last because other liable coverage exists.',
-      'State assistance first because it is active; spouse plan second because it is union-based; employer plan last because it appears in the intake narrative.',
-      'Spouse plan first because family coverage is broader; employer plan second because it is individual; state assistance third because it has a portal response.',
-      'Any order is acceptable as long as the claim eventually reaches all three plans before the patient is billed.'
+      'Employer plan first as subscriber; spouse plan second as dependent; state assistance last',
+      'State plan first as active coverage; spouse plan second; employer plan last from intake',
+      'Spouse plan first as family coverage; employer plan second; state plan third by portal',
+      'Any order works if every plan receives the claim before the patient is billed'
     ],
     correct:0,
     evidence:['cob'],
@@ -413,10 +413,10 @@ const quiz = [
   {
     question:'The primary EOB leaves $120. Which conclusion is strongest?',
     options:[
-      'Do not assume patient balance yet; use the EOB to coordinate with the next responsible payer.',
-      'The patient must pay $120 immediately because every EOB balance belongs to the patient.',
-      'The provider must write off $120 because allowed amount has already been calculated.',
-      'The claim must be denied because any unpaid amount means the first payer rejected the service.'
+      'Do not assume patient balance yet; use the EOB for the next responsible payer',
+      'Bill the patient immediately because every EOB balance belongs to the patient',
+      'Write off the amount because the allowed amount has already been calculated',
+      'Treat the claim as denied because any unpaid amount means payer rejection'
     ],
     correct:0,
     evidence:['eob','cob'],
@@ -426,10 +426,10 @@ const quiz = [
   {
     question:'Which error would most likely show that a biller is guessing from keywords instead of reasoning from documentation?',
     options:[
-      'Choosing malignant neoplasm because the word malignant appears, then billing state assistance because it is active.',
-      'Rejecting malignant neoplasm because it is R/O, then verifying behavior and payer order.',
-      'Using the Neoplasm Table only after identifying site and documented behavior.',
-      'Using the primary EOB to support billing the secondary payer before billing the patient.'
+      'Choosing malignant neoplasm from one keyword, then billing state assistance because active',
+      'Rejecting malignant neoplasm as unconfirmed, then verifying behavior and payer order',
+      'Using the Neoplasm Table after identifying the documented site and behavior',
+      'Using the primary EOB to support billing secondary before patient billing'
     ],
     correct:0,
     evidence:['ruleout','cob'],
