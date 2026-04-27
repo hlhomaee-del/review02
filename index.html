@@ -278,11 +278,11 @@ h2{font-size:clamp(25px,3.5vw,40px);letter-spacing:-.03em}.hint{color:var(--mute
 
           <p><b>Pathology addendum reviewed today:</b> Tubular adenomatous colonic neoplasm with high-grade dysplastic change. Margins indeterminate on fragmented specimen. <span class="evidence" data-evidence="behavior">The pathologist comments that the biologic behavior cannot be predicted from the submitted tissue; invasive carcinoma is not identified in the specimen</span>.</p>
 
-          <p><b>Assessment/Plan:</b> Ascending colon neoplastic lesion after biopsy; behavior not predictable on specimen. R/O malignant transformation; refer to colorectal surgery. Continue iron therapy. Repeat CBC. Discussed likely need for definitive resection depending on surgical evaluation.</p>
+          <p><b>A/P:</b> Ascending colon neoplastic lesion after biopsy; behavior not predictable on specimen. R/O malignant transformation; refer to colorectal surgery. Continue iron therapy. Repeat CBC. Discussed likely need for definitive resection depending on surgical evaluation.</p>
 
           <p><b>Primary payer response summary received:</b> Billed charge $780. Allowed amount $420. Plan paid $300 after network adjustment. <span class="evidence" data-evidence="eob">Remaining $120 is listed as member cost-share unless another payer is responsible under coordination rules</span>. Adjustment code indicates contractual reduction, not a medical-necessity denial.</p>
         </div>
-        <div class="notice">Nothing is underlined at the start. After students answer, the relevant evidence appears here.</div>
+        
       </div>
 
       <div class="quiz-card">
@@ -320,114 +320,127 @@ const cards = [
 
 const quiz = [
   {
-    question:'The note includes “R/O malignant neoplasm of ascending colon.” What should the biller do with that phrase for this outpatient encounter?',
+    question:'Which diagnosis choice best follows the pathology language for the colon lesion?',
     options:[
-      'Do not code the malignancy as confirmed; code only what is supported by confirmed documentation.',
-      'Code malignant neoplasm immediately because the provider mentioned the exact anatomic site.',
-      'Code carcinoma in situ because the lesion has dysplastic change and requires surgical review.',
-      'Code metastatic colon cancer because anemia and dark stools suggest advanced disease.'
+      'Neoplasm behavior supported by pathology, ascending colon',
+      'Malignant neoplasm, ascending colon',
+      'Carcinoma in situ, ascending colon',
+      'Positive fecal occult blood finding'
     ],
     correct:0,
-    evidence:['ruleout'],
-    teach:['Do not code as confirmed','Do not confuse'],
-    rationale:'R/O malignant neoplasm is uncertainty language. In outpatient coding, the cancer is not coded as confirmed unless the provider/pathology establishes malignancy.'
+    evidence:['ruleout','behavior'],
+    teach:['Do not code as confirmed','Behavior choice','Do not confuse'],
+    rationale:'The wording is intentionally restrained. The pathology supports a neoplasm behavior category, but the note does not confirm malignant neoplasm. Positive fecal occult blood is a finding, but the case gives more specific lesion/pathology documentation.'
   },
   {
-    question:'Based on the pathology wording, which behavior category is best supported for the neoplasm question in this activity?',
+    question:'Before selecting a diagnosis, which reasoning sequence is strongest?',
     options:[
-      'Uncertain behavior, because the tissue report says the biologic behavior cannot be predicted.',
-      'Malignant behavior, because colorectal surgery was requested after the biopsy addendum.',
-      'In situ behavior, because high-grade dysplasia always means carcinoma in situ coding.',
-      'Unspecified behavior, because the provider did not write an exact ICD-10-CM code.'
+      'Identify confirmed wording → evaluate the malignancy wording → locate neoplasm by site → choose behavior from documentation → verify final code.',
+      'Use the suspected diagnosis first because this is outpatient → locate malignancy by site → add pathology language afterward → verify final code.',
+      'Begin with the most definitive body site → select the colon subsite first → choose the most clinically concerning behavior → verify final code.',
+      'Start with the procedure history → connect biopsy to the lesion → choose the planned surgical outcome → verify final code.'
     ],
     correct:0,
-    evidence:['behavior'],
+    evidence:['ruleout','behavior'],
+    teach:['Main term/subterm thinking','Index clue','Do not code as confirmed'],
+    rationale:'All options sound orderly, but only the first sequence protects the coder from the rule-out trap. The coder must evaluate what is confirmed, then use the neoplasm site and behavior documentation correctly.'
+  },
+  {
+    question:'Which answer best explains why “neoplasm of uncertain behavior, ascending colon” is stronger than “malignant neoplasm, ascending colon” here?',
+    options:[
+      'The pathology describes behavior that cannot be predicted, while malignancy remains unconfirmed.',
+      'The provider ordered surgery, and all lesions sent to surgery are coded as uncertain behavior.',
+      'The patient has anemia, and anemia automatically changes colon lesions to uncertain behavior.',
+      'The payer paid part of the claim, which proves the diagnosis category selected was correct.'
+    ],
+    correct:0,
+    evidence:['behavior','ruleout'],
     teach:['Behavior choice','Do not confuse'],
-    rationale:'The key wording is that biologic behavior cannot be predicted and invasive carcinoma is not identified. That supports uncertain behavior in this teaching case, not confirmed malignancy.'
+    rationale:'This question asks for justification, not recognition. The reason is the pathology wording. Payer payment does not prove clinical correctness, and surgery referral does not confirm malignancy.'
   },
   {
-    question:'Which ICD-10-CM lookup path is the strongest starting point for the confirmed neoplasm finding?',
+    question:'Which coder shows the best main term and subterm logic instead of memorizing an index clue?',
     options:[
-      'Main term Neoplasm; then table site colon, ascending; then select the documented behavior column.',
-      'Main term Malignant; then subterm colon; then choose ascending colon because R/O was written.',
-      'Main term Anemia; then subterm iron deficiency; then add cancer because stool blood was positive.',
-      'Main term Colonoscopy; then subterm biopsy; then select a diagnosis from the procedure description.'
+      'Coder A: “I would begin with Neoplasm, then narrow by colon/ascending colon, then select behavior from the documentation.”',
+      'Coder B: “I would begin with Ascending because the anatomic modifier establishes the subsite before the condition.”',
+      'Coder C: “I would begin with Dysplasia because the histologic descriptor is the most clinically salient term in the report.”',
+      'Coder D: “I would begin with Surgery because the planned definitive intervention frames the encounter purpose.”'
     ],
     correct:0,
     evidence:['behavior'],
-    teach:['Index clue','Main term/subterm thinking'],
-    rationale:'For a documented neoplasm, start with the main term Neoplasm, locate the site/subsite in the Neoplasm Table, then choose the behavior column supported by documentation. The index clue is revealed now, not before the question.'
+    teach:['Main term/subterm thinking','Index clue'],
+    rationale:'The correct rationale starts with the condition being indexed, then narrows by site/subsite and behavior. Anatomical words, histologic adjectives, and future procedures may matter, but they are not the best main term starting point here.'
   },
   {
-    question:'Which pair best represents the main term and subterm logic for the confirmed neoplasm lookup?',
+    question:'The coder must choose among in situ, uncertain behavior, unspecified behavior, and malignant behavior. Which reasoning is most defensible?',
     options:[
-      'Main term: Neoplasm; subterms/site path: colon, ascending, with behavior chosen from documentation.',
-      'Main term: Ascending; subterm: colon, because the body location appears before the disease idea.',
-      'Main term: Dysplastic; subterm: high-grade, because the adjective sounds most clinically serious.',
-      'Main term: Resection; subterm: surgery, because the plan mentions possible definitive treatment.'
+      'Choose uncertain behavior because the note says behavior cannot be predicted and carcinoma is not identified.',
+      'Choose in situ because high-grade dysplasia is commonly treated as a preinvasive malignant category.',
+      'Choose unspecified behavior because the provider did not place a complete code in the A/P line.',
+      'Choose malignant behavior because the referral language implies a serious oncologic concern.'
     ],
     correct:0,
-    evidence:['behavior'],
-    teach:['Main term/subterm thinking'],
-    rationale:'The disease idea is the neoplasm. Ascending colon is the site/subsite information that narrows the lookup. The procedure plan is not the diagnosis lookup path.'
+    evidence:['behavior','ruleout'],
+    teach:['Behavior choice','Do not confuse'],
+    rationale:'The distinction is subtle and important. “Cannot be predicted” supports uncertain behavior. “Unspecified” means behavior detail is missing. “In situ” and “malignant” require their own documentation.'
   },
   {
-    question:'The chart gives three coverages, but not in clean “primary/secondary/tertiary” order. Which order should the biller most likely use?',
+    question:'A medical biller says, “The state plan is active, so bill it first because it will probably cover the patient.” What is the best correction?',
     options:[
-      'Patient’s own active employer plan first; spouse/dependent commercial plan second; state medical assistance last.',
-      'State medical assistance first; spouse/dependent commercial plan second; patient’s employer plan last.',
-      'Spouse/dependent commercial plan first; state medical assistance second; patient’s own employer plan last.',
-      'Whichever card was scanned first; then the newest eligibility screen; then the oldest card on file.'
+      'Active coverage is not the same as primary coverage; determine COB before choosing the billing order.',
+      'State assistance should be billed first when eligibility is active on the date of service.',
+      'The state plan may be billed first if the spouse plan has a higher patient cost-share.',
+      'State assistance should be ignored completely because commercial coverage also exists.'
     ],
     correct:0,
     evidence:['cob'],
     teach:['COB thinking','Do not confuse'],
-    rationale:'The patient is the employee/subscriber on her own active employer plan, a dependent under the spouse plan, and also has state assistance. The own employer plan is most likely first, spouse/dependent plan second, and Medicaid/state assistance last.'
+    rationale:'This is payer-order reasoning. The question is not “which plan exists?” but “which plan is responsible first?” The patient’s own active employer coverage is usually first; dependent spouse coverage follows; state assistance is generally last.'
   },
   {
-    question:'The primary payer EOB shows allowed $420, paid $300, and $120 remaining unless another payer is responsible. What should happen next?',
+    question:'Based on the scattered registration details, which sequence is most defensible and why?',
     options:[
-      'Use the primary EOB to bill the next responsible payer before billing the patient when secondary coverage exists.',
-      'Write off the full $120 because any balance after the first EOB becomes an automatic adjustment.',
-      'Bill the patient immediately because an EOB always means every other payer has finished processing.',
-      'Resubmit the same claim to the primary plan because any remaining balance means the claim denied.'
+      'Patient employer plan first because she is subscriber; spouse plan second because she is dependent; state assistance last because other liable coverage exists.',
+      'State assistance first because it is active; spouse plan second because it is union-based; employer plan last because it appears in the intake narrative.',
+      'Spouse plan first because family coverage is broader; employer plan second because it is individual; state assistance third because it has a portal response.',
+      'Any order is acceptable as long as the claim eventually reaches all three plans before the patient is billed.'
+    ],
+    correct:0,
+    evidence:['cob'],
+    teach:['COB thinking'],
+    rationale:'The answer must include the why, not just the order. Subscriber vs dependent status and payer-of-last-resort logic are the key reasoning points.'
+  },
+  {
+    question:'The primary EOB leaves $120. Which conclusion is strongest?',
+    options:[
+      'Do not assume patient balance yet; use the EOB to coordinate with the next responsible payer.',
+      'The patient must pay $120 immediately because every EOB balance belongs to the patient.',
+      'The provider must write off $120 because allowed amount has already been calculated.',
+      'The claim must be denied because any unpaid amount means the first payer rejected the service.'
     ],
     correct:0,
     evidence:['eob','cob'],
     teach:['EOB thinking','COB thinking'],
-    rationale:'The EOB is needed for the secondary payer. If secondary coverage exists, the biller uses the primary EOB information to coordinate the next claim instead of assuming patient responsibility immediately.'
+    rationale:'An EOB is not the end of the story when secondary coverage exists. It explains how the first payer processed the claim and helps the next payer calculate responsibility.'
   },
   {
-    question:'Which statement is the most accurate distinction between “uncertain behavior” and “unspecified behavior” for this case?',
+    question:'Which error would most likely show that a biller is guessing from keywords instead of reasoning from documentation?',
     options:[
-      'Uncertain behavior means the behavior cannot be predicted; unspecified means the documentation lacks behavior detail.',
-      'Unspecified behavior means pathology predicted the behavior; uncertain means no tissue was reviewed at all.',
-      'Uncertain behavior means confirmed cancer; unspecified behavior means benign tumor with no symptoms.',
-      'Both terms mean the same thing, so the biller may choose either when the note is difficult.'
+      'Choosing malignant neoplasm because the word malignant appears, then billing state assistance because it is active.',
+      'Rejecting malignant neoplasm because it is R/O, then verifying behavior and payer order.',
+      'Using the Neoplasm Table only after identifying site and documented behavior.',
+      'Using the primary EOB to support billing the secondary payer before billing the patient.'
     ],
     correct:0,
-    evidence:['behavior'],
-    teach:['Behavior choice','Do not confuse'],
-    rationale:'Uncertain behavior is not just “we do not know because we did not read carefully.” It is a behavior category supported by documentation that behavior cannot be predicted. Unspecified means the documentation does not provide the needed behavior detail.'
-  },
-  {
-    question:'What is the biggest claim-risk mistake hidden in this case?',
-    options:[
-      'Treating rule-out malignancy as confirmed while also sending the claim to the wrong payer order.',
-      'Choosing the longest diagnosis description and sending the claim to every payer simultaneously.',
-      'Coding anemia as the only diagnosis while ignoring all payer cards and the processed EOB.',
-      'Using the pathology wording but refusing to verify the code in the Tabular List afterward.'
-    ],
-    correct:0,
-    evidence:['ruleout','cob','eob'],
-    teach:['Do not code as confirmed','COB thinking','EOB thinking'],
-    rationale:'The dangerous combination is coding an unconfirmed cancer diagnosis and mishandling payer order. A strong biller protects the claim by separating confirmed documentation from R/O language and using COB/EOB logic.'
+    evidence:['ruleout','cob'],
+    teach:['Do not confuse','Do not code as confirmed','COB thinking'],
+    rationale:'Keyword guessing is exactly what this case is designed to expose. “Malignant” appears but is not confirmed. State assistance appears active but is not automatically first.'
   }
 ];
 
 const teachingText = {
   'Do not code as confirmed':'Do not code outpatient diagnoses documented as R/O, possible, suspected, probable, questionable, differential, working diagnosis, or pending confirmation as confirmed. Code to the highest degree of certainty documented for that encounter.',
-  'Do not confuse':'Do not let serious language trick you. “R/O malignant,” “refer to oncology/surgery,” “high-grade,” “family history,” and “positive test” can support concern, but they do not automatically confirm malignant neoplasm.',
+  'Do not confuse':'Do not let serious language trick you. “R/O malignant,” “refer to oncology/surgery,” “high-grade,” “family history,” and “positive test” can support concern, but they do not automatically confirm malignant neoplasm. Positive fecal occult blood can be a finding, but it is not the best code when a more specific confirmed lesion/pathology is documented.',
   'Behavior choice':'For neoplasms, behavior matters. Malignant, benign, in situ, uncertain behavior, and unspecified behavior are not the same. Match the behavior to the documentation, then verify in the Tabular List.',
   'Index clue':'Index clue revealed after the answer: for a documented neoplasm, start with the main term “Neoplasm,” use the Neoplasm Table, locate the site/subsite, then choose the behavior column.',
   'Main term/subterm thinking':'Main term is the disease idea or reason being coded. Subterms narrow it. In this case, “neoplasm” is the main term; colon/ascending colon narrows the site; behavior comes from documentation.',
