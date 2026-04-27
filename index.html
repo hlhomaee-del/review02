@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CBCS COB, EOB, Main Term & Subterm Sprint</title>
+<title>COB, EOB, Main Term/Subterm Challenge</title>
 <style>
 :root{
   --bg:#070914;
@@ -20,7 +20,6 @@
   --blue:#60a5fa;
   --pink:#f472b6;
   --orange:#fb923c;
-  --lime:#bef264;
   --shadow:0 18px 50px rgba(0,0,0,.38);
   --radius:24px;
 }
@@ -30,21 +29,21 @@ body{
   font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color:var(--text);
   background:
-    radial-gradient(circle at 10% 10%, rgba(34,211,238,.18), transparent 28%),
-    radial-gradient(circle at 90% 20%, rgba(167,139,250,.16), transparent 30%),
-    radial-gradient(circle at 50% 90%, rgba(251,113,133,.12), transparent 32%),
+    radial-gradient(circle at 8% 12%, rgba(34,211,238,.18), transparent 26%),
+    radial-gradient(circle at 90% 18%, rgba(167,139,250,.16), transparent 30%),
+    radial-gradient(circle at 52% 95%, rgba(251,113,133,.12), transparent 35%),
     var(--bg);
   overflow-x:hidden;
 }
 button{font-family:inherit}
-.shell{max-width:1120px;margin:0 auto;padding:24px 18px 80px}
+.shell{max-width:1160px;margin:0 auto;padding:24px 18px 80px}
 .topbar{
   position:sticky;top:0;z-index:20;
-  background:linear-gradient(180deg, rgba(7,9,20,.97), rgba(7,9,20,.82));
+  background:linear-gradient(180deg, rgba(7,9,20,.97), rgba(7,9,20,.84));
   backdrop-filter:blur(18px);
   border-bottom:1px solid var(--line);
 }
-.topbar-inner{max-width:1120px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.topbar-inner{max-width:1160px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .logo{font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--cyan);font-size:13px;display:flex;align-items:center;gap:10px}
 .logo-mark{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;background:rgba(34,211,238,.14);border:1px solid rgba(34,211,238,.45)}
 .progress-wrap{flex:1;min-width:210px;display:flex;align-items:center;gap:10px}
@@ -65,7 +64,7 @@ button{font-family:inherit}
 .hero:before{content:"";position:absolute;inset:-90px auto auto -90px;width:240px;height:240px;border-radius:50%;background:rgba(34,211,238,.18);filter:blur(28px)}
 .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(34,211,238,.35);background:rgba(34,211,238,.12);color:var(--cyan);padding:7px 12px;border-radius:999px;font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
 h1{font-size:clamp(32px,5vw,58px);line-height:.98;letter-spacing:-.04em;margin-bottom:14px;max-width:850px}
-.subtitle{font-size:18px;color:var(--muted);max-width:860px;line-height:1.55;margin-bottom:22px}
+.subtitle{font-size:18px;color:var(--muted);max-width:870px;line-height:1.55;margin-bottom:22px}
 .teacher-note{font-size:14px;color:#dbeafe;background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.24);padding:14px 16px;border-radius:18px;line-height:1.55;margin-top:16px}
 .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
 .primary,.secondary{
@@ -73,29 +72,91 @@ h1{font-size:clamp(32px,5vw,58px);line-height:.98;letter-spacing:-.04em;margin-b
 }
 .primary{color:#071018;background:linear-gradient(135deg,var(--cyan),var(--green));box-shadow:0 10px 28px rgba(34,211,238,.24)}
 .primary:hover,.secondary:hover{transform:translateY(-2px)}
+.primary:disabled,.secondary:disabled{opacity:.45;cursor:not-allowed;transform:none}
 .secondary{color:var(--text);background:rgba(255,255,255,.08);border:1px solid var(--line)}
 .page{display:none;animation:rise .35s ease;margin-top:22px}.page.active{display:block}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin:28px 0 18px}
-h2{font-size:clamp(25px,3.5vw,40px);letter-spacing:-.03em}.hint{color:var(--muted);line-height:1.5;max-width:650px}
+h2{font-size:clamp(25px,3.5vw,40px);letter-spacing:-.03em}.hint{color:var(--muted);line-height:1.5;max-width:720px}
+
+/* Fixed flashcards */
 .card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.flip-card{height:240px;perspective:1200px;cursor:pointer;position:relative}
-.flip-inner{position:relative;width:100%;height:100%;transition:transform .58s ease;transform-style:preserve-3d;-webkit-transform-style:preserve-3d}
+.flip-card{min-height:230px;perspective:1200px;cursor:pointer;position:relative}
+.flip-inner{position:relative;width:100%;height:100%;min-height:230px;transition:transform .65s ease;transform-style:preserve-3d}
 .flip-card.flipped .flip-inner{transform:rotateY(180deg)}
-.face{position:absolute;inset:0;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.16);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-style:preserve-3d;-webkit-transform-style:preserve-3d}
-.face:after{content:"";position:absolute;right:-45px;bottom:-45px;width:115px;height:115px;border-radius:50%;background:rgba(255,255,255,.16);z-index:0;pointer-events:none}
-.front{background:linear-gradient(135deg,var(--c),rgba(255,255,255,.09));color:#071018;transform:rotateY(0deg);-webkit-transform:rotateY(0deg)}.back{background:linear-gradient(135deg, rgba(20,27,50,.98), rgba(255,255,255,.065));color:#e9eef8;transform:rotateY(180deg);-webkit-transform:rotateY(180deg)}
-.card-num,.term,.tap,.back p{position:relative;z-index:2;transform:translateZ(1px)}
-.card-num{font-weight:1000;opacity:.75;font-size:12px;text-transform:uppercase;letter-spacing:.08em}.term{font-size:clamp(22px,2.2vw,29px);line-height:1.05;font-weight:1000;letter-spacing:-.03em}.tap{font-size:12px;font-weight:900;opacity:.85}.back p{color:#dbe4f3;font-size:14px;line-height:1.42;overflow:auto;max-height:154px;padding-right:3px}.back strong{color:var(--c)}
-.flip-card:not(.flipped) .back{pointer-events:none;opacity:0}
-.flip-card.flipped .front{pointer-events:none;opacity:0}
-.flip-card.flipped .back{opacity:1}
-.partner-panel{margin-top:22px;border-radius:28px;padding:22px;background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.035));border:1px solid var(--line);box-shadow:var(--shadow)}.partner-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:16px}.partner-head h3{font-size:24px;letter-spacing:-.02em}.partner-directions{color:var(--muted);line-height:1.5;max-width:820px}.partner-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.partner-check{border-radius:20px;padding:16px;background:rgba(255,255,255,.055);border:1px solid var(--line);color:#e8eefc;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}.partner-check:before{content:"";position:absolute;inset:0 0 auto 0;height:7px;background:var(--pc);opacity:.95}.partner-check:nth-child(1){--pc:var(--cyan);background:linear-gradient(180deg,rgba(34,211,238,.12),rgba(255,255,255,.045))}.partner-check:nth-child(2){--pc:var(--green);background:linear-gradient(180deg,rgba(52,211,153,.12),rgba(255,255,255,.045))}.partner-check:nth-child(3){--pc:var(--amber);background:linear-gradient(180deg,rgba(251,191,36,.12),rgba(255,255,255,.045))}.partner-check:nth-child(4){--pc:var(--purple);background:linear-gradient(180deg,rgba(167,139,250,.12),rgba(255,255,255,.045))}.partner-check:nth-child(5){--pc:var(--rose);background:linear-gradient(180deg,rgba(251,113,133,.12),rgba(255,255,255,.045))}.partner-check b{color:var(--pc);font-size:13px;text-transform:uppercase;letter-spacing:.06em}.partner-check p{color:#eef4ff;line-height:1.4;font-weight:760}.turn-note{color:var(--muted);font-size:13px;line-height:1.45}.reveal-btn{border:1px solid rgba(251,191,36,.35);background:rgba(251,191,36,.11);color:var(--amber);border-radius:14px;padding:10px 12px;cursor:pointer;font-weight:900;margin-top:auto}.reveal-btn:hover{background:rgba(251,191,36,.18)}.partner-answer{display:none;color:#dbeafe;background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.22);padding:11px;border-radius:14px;line-height:1.4;font-size:14px}.partner-answer.show{display:block}.partner-check-row{display:flex;align-items:flex-start;gap:9px;background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:14px;padding:10px;color:var(--muted);font-size:13px;line-height:1.35}.partner-check-row input{margin-top:2px;accent-color:#34d399;transform:scale(1.1)}.partner-next{font-size:12px;color:var(--green);font-weight:900;display:none}.partner-next.show{display:block}.credit-line{text-align:center;color:rgba(168,179,199,.72);font-size:11px;margin-top:10px;letter-spacing:.02em}
-.challenge-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px;align-items:start}.note-card,.quiz-card,.result-box{border-radius:28px;background:rgba(16,22,41,.82);border:1px solid var(--line);box-shadow:var(--shadow);padding:22px}.note-title{font-weight:1000;color:var(--amber);letter-spacing:.08em;text-transform:uppercase;font-size:12px;margin-bottom:12px}.provider-note{color:#e9eef8;line-height:1.78;font-size:15px}.provider-note b{color:white}.provider-note span{display:inline;border-bottom:1px dashed rgba(255,255,255,.22);padding:1px 3px;border-radius:5px}.provider-note .key{background:rgba(52,211,153,.12);border-bottom-color:rgba(52,211,153,.45)}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.mini-box{border:1px solid var(--line);border-radius:18px;padding:13px;background:rgba(255,255,255,.045)}.mini-box h4{color:var(--cyan);font-size:13px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}.mini-box p{color:#dbe4f3;font-size:14px;line-height:1.45}
-.quiz-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}.pill{font-size:12px;font-weight:1000;color:var(--cyan);background:rgba(34,211,238,.11);border:1px solid rgba(34,211,238,.25);padding:7px 10px;border-radius:999px}.qtext{font-size:19px;font-weight:950;line-height:1.35;margin:8px 0 16px}.options{display:grid;gap:10px}.option{width:100%;text-align:left;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:#edf2fb;padding:13px 14px;cursor:pointer;font-size:15px;line-height:1.35;transition:.18s}.option:hover{background:rgba(255,255,255,.09);border-color:rgba(34,211,238,.45)}.option.selected{border-color:var(--cyan);background:rgba(34,211,238,.12)}.option.correct{border-color:var(--green);background:rgba(52,211,153,.14)}.option.wrong{border-color:var(--rose);background:rgba(251,113,133,.12)}.feedback{display:none;margin-top:14px;padding:14px;border-radius:16px;line-height:1.5;color:#dbe4f3;background:rgba(255,255,255,.055);border:1px solid var(--line)}.feedback.show{display:block}.mini-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.result-box{display:none;margin-top:18px}.result-box.show{display:block}.score-big{font-size:46px;font-weight:1000;letter-spacing:-.04em}.status{font-size:24px;font-weight:1000;margin:4px 0 8px}.status.ready{color:var(--green)}.status.almost{color:var(--amber)}.status.review{color:var(--rose)}.small-list{margin-top:12px;color:var(--muted);line-height:1.6;padding-left:18px}.footer-note{text-align:center;color:var(--muted);font-size:13px;margin-top:28px}.hidden{display:none!important}
-@media(max-width:900px){.card-grid{grid-template-columns:repeat(2,1fr)}.challenge-layout{grid-template-columns:1fr}.partner-grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.hero{padding:24px}}
-@media(max-width:520px){.card-grid{grid-template-columns:1fr}.flip-card{height:225px}.topbar-inner{align-items:flex-start}.progress-label{text-align:left}.shell{padding:18px 12px 60px}.term{font-size:23px}}
+.face{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border-radius:var(--radius);padding:20px;
+  display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow);
+  border:1px solid rgba(255,255,255,.15);overflow:hidden;
+}
+.face:after{content:"";position:absolute;right:-45px;bottom:-45px;width:115px;height:115px;border-radius:50%;background:rgba(255,255,255,.18)}
+.front{background:linear-gradient(135deg,var(--c),rgba(255,255,255,.08));color:#071018;transform:rotateY(0deg)}
+.back{background:linear-gradient(135deg, rgba(20,27,50,.98), rgba(255,255,255,.06));transform:rotateY(180deg)}
+.card-num{font-weight:1000;opacity:.75;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.term{font-size:25px;line-height:1.05;font-weight:1000;letter-spacing:-.03em;position:relative;z-index:1}
+.tap{font-size:12px;font-weight:900;opacity:.85;position:relative;z-index:1}
+.back p{color:#dbe4f3;font-size:15px;line-height:1.45;position:relative;z-index:1}.back strong{color:var(--c)}
+
+.partner-panel{margin-top:22px;border-radius:28px;padding:22px;background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.035));border:1px solid var(--line);box-shadow:var(--shadow)}
+.partner-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:16px}
+.partner-head h3{font-size:24px;letter-spacing:-.02em}
+.partner-directions{color:var(--muted);line-height:1.5;max-width:820px}
+.partner-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.partner-check{border-radius:20px;padding:16px;background:rgba(255,255,255,.055);border:1px solid var(--line);color:#e8eefc;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+.partner-check:before{content:"";position:absolute;inset:0 0 auto 0;height:7px;background:var(--pc);opacity:.95}
+.partner-check:nth-child(1){--pc:var(--cyan);background:linear-gradient(180deg,rgba(34,211,238,.12),rgba(255,255,255,.045))}
+.partner-check:nth-child(2){--pc:var(--green);background:linear-gradient(180deg,rgba(52,211,153,.12),rgba(255,255,255,.045))}
+.partner-check:nth-child(3){--pc:var(--amber);background:linear-gradient(180deg,rgba(251,191,36,.12),rgba(255,255,255,.045))}
+.partner-check:nth-child(4){--pc:var(--purple);background:linear-gradient(180deg,rgba(167,139,250,.12),rgba(255,255,255,.045))}
+.partner-check:nth-child(5){--pc:var(--rose);background:linear-gradient(180deg,rgba(251,113,133,.12),rgba(255,255,255,.045))}
+.partner-check b{color:var(--pc);font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+.partner-check p{color:#eef4ff;line-height:1.4;font-weight:760}
+.turn-note{color:var(--muted);font-size:13px;line-height:1.45}
+.reveal-btn{border:1px solid rgba(251,191,36,.35);background:rgba(251,191,36,.11);color:var(--amber);border-radius:14px;padding:10px 12px;cursor:pointer;font-weight:900;margin-top:auto}
+.partner-answer{display:none;color:#dbeafe;background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.22);padding:11px;border-radius:14px;line-height:1.4;font-size:14px}
+.partner-answer.show{display:block}
+.partner-check-row{display:flex;align-items:flex-start;gap:9px;background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:14px;padding:10px;color:var(--muted);font-size:13px;line-height:1.35}
+.partner-check-row input{margin-top:2px;accent-color:#34d399;transform:scale(1.1)}
+.partner-next{font-size:12px;color:var(--green);font-weight:900;display:none}.partner-next.show{display:block}
+
+.challenge-layout{display:grid;grid-template-columns:.95fr 1.05fr;gap:18px;align-items:start}
+.note-card,.quiz-card,.result-box{border-radius:28px;background:rgba(16,22,41,.84);border:1px solid var(--line);box-shadow:var(--shadow);padding:22px}
+.note-title{font-weight:1000;color:var(--amber);letter-spacing:.08em;text-transform:uppercase;font-size:12px;margin-bottom:12px}
+.provider-note{color:#e9eef8;line-height:1.72;font-size:15px}
+.provider-note p{margin-bottom:10px}
+.provider-note b{color:white}
+.evidence{display:inline;border-bottom:0;padding:1px 3px;border-radius:5px;transition:.25s}
+.evidence.revealed{background:rgba(52,211,153,.13);border-bottom:2px solid rgba(52,211,153,.9)}
+.evidence.warn.revealed{background:rgba(251,113,133,.13);border-bottom-color:rgba(251,113,133,.9)}
+.evidence.cob.revealed{background:rgba(96,165,250,.13);border-bottom-color:rgba(96,165,250,.9)}
+.notice{margin-top:12px;color:var(--muted);font-size:13px;line-height:1.45;background:rgba(255,255,255,.045);border:1px solid var(--line);padding:12px;border-radius:16px}
+.quiz-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+.pill{font-size:12px;font-weight:1000;color:var(--cyan);background:rgba(34,211,238,.11);border:1px solid rgba(34,211,238,.25);padding:7px 10px;border-radius:999px}
+.qtext{font-size:19px;font-weight:950;line-height:1.35;margin:8px 0 16px}
+.options{display:grid;gap:10px}
+.option{width:100%;text-align:left;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:#edf2fb;padding:13px 14px;cursor:pointer;font-size:15px;line-height:1.35;transition:.18s}
+.option:hover{background:rgba(255,255,255,.09);border-color:rgba(34,211,238,.45)}
+.option.selected{border-color:var(--cyan);background:rgba(34,211,238,.12)}
+.option.correct{border-color:var(--green);background:rgba(52,211,153,.14)}
+.option.wrong{border-color:var(--rose);background:rgba(251,113,133,.12)}
+.feedback{display:none;margin-top:14px;padding:14px;border-radius:16px;line-height:1.5;color:#dbe4f3;background:rgba(255,255,255,.055);border:1px solid var(--line)}
+.feedback.show{display:block}
+.teach-bank{display:none;margin-top:12px;gap:8px;flex-wrap:wrap}
+.teach-bank.show{display:flex}
+.teach-btn{border:1px solid rgba(167,139,250,.42);background:rgba(167,139,250,.12);color:#ddd6fe;border-radius:999px;padding:9px 12px;font-weight:900;cursor:pointer;font-size:12px}
+.teach-text{display:none;margin-top:10px;color:#e8eefc;background:rgba(167,139,250,.10);border:1px solid rgba(167,139,250,.24);padding:12px;border-radius:15px;line-height:1.5;font-size:14px}
+.teach-text.show{display:block}
+.mini-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.result-box{display:none;margin-top:18px}.result-box.show{display:block}
+.score-big{font-size:46px;font-weight:1000;letter-spacing:-.04em}
+.status{font-size:24px;font-weight:1000;margin:4px 0 8px}.status.ready{color:var(--green)}.status.almost{color:var(--amber)}.status.review{color:var(--rose)}
+.small-list{margin-top:12px;color:var(--muted);line-height:1.6;padding-left:18px}
+.footer-note{text-align:center;color:var(--muted);font-size:13px;margin-top:28px}
+.credit-line{text-align:center;color:rgba(168,179,199,.72);font-size:11px;margin-top:10px;letter-spacing:.02em}
+.hidden{display:none!important}
+@media(max-width:980px){.card-grid{grid-template-columns:repeat(2,1fr)}.challenge-layout{grid-template-columns:1fr}.partner-grid{grid-template-columns:1fr}.hero{padding:24px}}
+@media(max-width:540px){.card-grid{grid-template-columns:1fr}.flip-card,.flip-inner{min-height:220px}.topbar-inner{align-items:flex-start}.progress-label{text-align:left}.shell{padding:18px 12px 60px}.term{font-size:23px}}
 </style>
 </head>
 <body>
@@ -104,31 +165,31 @@ h2{font-size:clamp(25px,3.5vw,40px);letter-spacing:-.03em}.hint{color:var(--mute
     <div class="logo"><span class="logo-mark">⚕</span>CBCS Sprint</div>
     <div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">0%</div></div>
     <div class="nav">
-      <button class="nav-btn active" id="tab1" onclick="showPage(1)">Concept Sprint</button>
-      <button class="nav-btn" id="tab2" onclick="showPage(2)">Claim Challenge</button>
+      <button class="nav-btn active" id="tab1" onclick="showPage(1)">Flashcards</button>
+      <button class="nav-btn" id="tab2" onclick="showPage(2)">Hard Challenge</button>
     </div>
   </div>
 </header>
 
 <main class="shell">
   <section class="hero" id="hero">
-    <div class="badge">5–10 Minute Warm-Up</div>
-    <h1>COB, EOB, Main Term & Subterm Sprint</h1>
-    <p class="subtitle">A fast review before students complete a workplace claim task. Students must separate payer sequencing, claim outcome language, and ICD-10-CM index logic instead of guessing from familiar words.</p>
+    <div class="badge">Harder 10-Minute Review</div>
+    <h1>COB, EOB, Main Term & Subterm Challenge</h1>
+    <p class="subtitle">Students practice the kind of thinking test designers expect: reading messy information, finding payer order, avoiding rule-out diagnoses, and choosing the correct ICD-10-CM lookup path without being handed the clue.</p>
     <div class="actions">
       <button class="primary" onclick="startSprint()">Start Review</button>
-      <button class="secondary" onclick="showPage(2)">Skip to Mini Challenge</button>
+      <button class="secondary" onclick="showPage(2)">Skip to Hard Challenge</button>
     </div>
-    <div class="teacher-note"><b>Teacher note:</b> This review is intentionally challenging. It forces students to distinguish who pays first, what the payer already decided, and how to search a diagnosis from main term to subterm before completing claim paperwork.</div>
+    <div class="teacher-note"><b>Teacher note:</b> The mini case intentionally looks like real chart information: insurance details are scattered, the provider uses R/O language, and the index clue is not shown until students answer the lookup question.</div>
   </section>
 
   <section class="page active" id="page1">
     <div class="section-head">
       <div>
-        <h2>Page 1: Concept Sprint</h2>
-        <p class="hint">Click each flashcard first. Then students test each other using the partner questions. No answer should be revealed until the person has spoken.</p>
+        <h2>Page 1: Flashcards</h2>
+        <p class="hint">Students flip the cards first. The backside is fully hidden until the flip, so the answer will not show through the card.</p>
       </div>
-      <button class="primary" onclick="showPage(2)">Go to Mini Challenge →</button>
+      <button class="primary" onclick="showPage(2)">Go to Hard Challenge →</button>
     </div>
 
     <div class="card-grid" id="cardGrid"></div>
@@ -136,55 +197,55 @@ h2{font-size:clamp(25px,3.5vw,40px);letter-spacing:-.03em}.hint{color:var(--mute
     <div class="partner-panel">
       <div class="partner-head">
         <div>
-          <h3>Partner Understanding Check</h3>
-          <p class="partner-directions"><b>Directions:</b> Partner A asks Questions 1, 3, and 5. Partner B asks Questions 2 and 4. The person answering must respond first. Then click Reveal Answer. After revealing, check whether your partner got it right. If not, the partner fixes the answer using the explanation. Then switch who speaks.</p>
+          <h3>Partner Check</h3>
+          <p class="partner-directions"><b>Directions:</b> Partner A asks Questions 1, 3, and 5. Partner B asks Questions 2 and 4. The answerer speaks first. Then reveal the answer, check if the partner was correct, and switch roles.</p>
         </div>
       </div>
       <div class="partner-grid">
         <div class="partner-check">
           <b>Question 1 — Partner A asks</b>
-          <p>What is COB really trying to determine before the claim is paid?</p>
+          <p>When a provider writes R/O cancer in an outpatient note, should the biller code cancer as confirmed?</p>
           <div class="turn-note">Answer first. Then reveal and judge.</div>
           <button class="reveal-btn" onclick="revealPartnerAnswer(0)">Reveal Answer</button>
-          <div class="partner-answer" id="partnerAnswer0"><b>Correct answer:</b> COB determines which insurance plan is primary, secondary, or sometimes tertiary, so the claim is sent and paid in the correct order.</div>
+          <div class="partner-answer" id="partnerAnswer0"><b>Correct answer:</b> No. R/O, suspected, possible, probable, questionable, and working diagnosis language is not coded as confirmed in outpatient coding.</div>
           <label class="partner-check-row"><input type="checkbox" onchange="togglePartnerNext(0,this)"> Did your partner get it right?</label>
-          <div class="partner-next" id="partnerNext0">Good. Now move to Question 2. Partner B asks.</div>
+          <div class="partner-next" id="partnerNext0">Good. Now Partner B asks Question 2.</div>
         </div>
         <div class="partner-check">
           <b>Question 2 — Partner B asks</b>
-          <p>What is the difference between an EOB and a bill?</p>
+          <p>What is COB trying to determine when a patient has more than one active plan?</p>
           <div class="turn-note">Answer first. Then reveal and judge.</div>
           <button class="reveal-btn" onclick="revealPartnerAnswer(1)">Reveal Answer</button>
-          <div class="partner-answer" id="partnerAnswer1"><b>Correct answer:</b> An EOB explains how the payer processed the claim. It is not itself the patient bill, even though it may show patient responsibility.</div>
+          <div class="partner-answer" id="partnerAnswer1"><b>Correct answer:</b> COB determines which payer is billed first, which payer is secondary, and whether another payer is payer of last resort.</div>
           <label class="partner-check-row"><input type="checkbox" onchange="togglePartnerNext(1,this)"> Did your partner get it right?</label>
-          <div class="partner-next" id="partnerNext1">Good. Now move to Question 3. Partner A asks.</div>
+          <div class="partner-next" id="partnerNext1">Good. Now Partner A asks Question 3.</div>
         </div>
         <div class="partner-check">
           <b>Question 3 — Partner A asks</b>
-          <p>In ICD-10-CM index searching, what do you look for first: the main term or the subterm?</p>
+          <p>How do you decide the ICD-10-CM main term when the note has several tempting words?</p>
           <div class="turn-note">Answer first. Then reveal and judge.</div>
           <button class="reveal-btn" onclick="revealPartnerAnswer(2)">Reveal Answer</button>
-          <div class="partner-answer" id="partnerAnswer2"><b>Correct answer:</b> Start with the main term, usually the disease, condition, injury, or key noun. Then use subterms to narrow the code.</div>
+          <div class="partner-answer" id="partnerAnswer2"><b>Correct answer:</b> Start with the actual condition or reason being coded, not a random adjective, body part, symptom, or procedure word.</div>
           <label class="partner-check-row"><input type="checkbox" onchange="togglePartnerNext(2,this)"> Did your partner get it right?</label>
-          <div class="partner-next" id="partnerNext2">Good. Now move to Question 4. Partner B asks.</div>
+          <div class="partner-next" id="partnerNext2">Good. Now Partner B asks Question 4.</div>
         </div>
         <div class="partner-check">
           <b>Question 4 — Partner B asks</b>
-          <p>What kind of details do subterms usually add?</p>
+          <p>What does an EOB explain after the primary payer processes a claim?</p>
           <div class="turn-note">Answer first. Then reveal and judge.</div>
           <button class="reveal-btn" onclick="revealPartnerAnswer(3)">Reveal Answer</button>
-          <div class="partner-answer" id="partnerAnswer3"><b>Correct answer:</b> Subterms add details such as body site, laterality, acute or chronic status, cause, severity, complication, or encounter type.</div>
+          <div class="partner-answer" id="partnerAnswer3"><b>Correct answer:</b> It explains charges, allowed amount, payer payment, adjustments, denial reason if any, and what may remain for the patient or secondary payer.</div>
           <label class="partner-check-row"><input type="checkbox" onchange="togglePartnerNext(3,this)"> Did your partner get it right?</label>
-          <div class="partner-next" id="partnerNext3">Good. Now move to Question 5. Partner A asks.</div>
+          <div class="partner-next" id="partnerNext3">Good. Now Partner A asks Question 5.</div>
         </div>
         <div class="partner-check">
           <b>Question 5 — Partner A asks</b>
-          <p>If the EOB shows deductible applied, does that mean the claim was denied?</p>
+          <p>Why is “in situ,” “uncertain behavior,” and “unspecified behavior” not the same thing?</p>
           <div class="turn-note">Answer first. Then reveal and judge.</div>
           <button class="reveal-btn" onclick="revealPartnerAnswer(4)">Reveal Answer</button>
-          <div class="partner-answer" id="partnerAnswer4"><b>Correct answer:</b> No. Deductible applied usually means the payer processed the claim and assigned the allowed amount to patient responsibility.</div>
+          <div class="partner-answer" id="partnerAnswer4"><b>Correct answer:</b> They describe different neoplasm behavior categories. Do not swap them. Use the behavior documented by the provider/pathology, then verify in the Tabular List.</div>
           <label class="partner-check-row"><input type="checkbox" onchange="togglePartnerNext(4,this)"> Did your partner get it right?</label>
-          <div class="partner-next" id="partnerNext4">Good. Partner check complete. Now go to the Mini Challenge.</div>
+          <div class="partner-next" id="partnerNext4">Partner check complete. Now start the challenge.</div>
         </div>
       </div>
     </div>
@@ -193,41 +254,44 @@ h2{font-size:clamp(25px,3.5vw,40px);letter-spacing:-.03em}.hint{color:var(--mute
   <section class="page" id="page2">
     <div class="section-head">
       <div>
-        <h2>Page 2: Claim Challenge</h2>
-        <p class="hint">Read the claim file, answer six questions, check each answer, then show results.</p>
+        <h2>Page 2: Hard Challenge</h2>
+        <p class="hint">Read the note as if it came from a real chart. No clue is underlined at first. Evidence appears only after the student checks an answer.</p>
       </div>
       <button class="secondary" onclick="resetQuiz()">Reset Challenge</button>
     </div>
 
     <div class="challenge-layout">
       <div class="note-card">
-        <div class="note-title">Mini Claim File</div>
-        <div class="provider-note">
-          <p><b>Patient:</b> <span>Marcus Allen, DOB 09/18/1976</span>.</p>
-          <p><b>Coverage file:</b> <span class="key">Active employer group plan through current job</span>. Also listed: <span class="key">spouse's plan, active as dependent coverage</span>.</p>
-          <p><b>COB clue:</b> Patient is the employee/subscriber on his own plan and a dependent on spouse's plan.</p>
-          <p><b>Provider note:</b> Patient seen for <span class="key">acute bronchitis</span> with cough and chest congestion. Pneumonia was considered but not confirmed.</p>
-          <p><b>Index practice:</b> For diagnosis lookup, start with the condition <span class="key">bronchitis</span>, then narrow by <span class="key">acute</span>.</p>
-          <p><b>Primary payer EOB:</b> Allowed amount $180. Paid $120. <span class="key">Patient responsibility $60 copay/coinsurance</span>. Remark: processed according to plan benefits.</p>
-          <p><b>Next billing action:</b> Secondary claim may need the primary EOB details attached or electronically reported.</p>
+        <div class="note-title">Complex Provider + Registration Note</div>
+        <div class="provider-note" id="providerNote">
+          <p><b>Patient:</b> Maris Cole, DOB 06/18/1974. Outpatient GI follow-up after colonoscopy and pathology review.</p>
+
+          <p><b>Registration notes from intake and eligibility screens:</b> Patient presented three coverage cards. 
+          The first card was issued through the patient’s current employer, Riverview Community College, and lists the patient as the employee/subscriber. 
+          A second commercial card is through the spouse’s union benefit plan and lists the patient as spouse/dependent. 
+          The state medical assistance portal also returned active eligibility for the service date. 
+          No Medicare entitlement appears on today’s eligibility check. A prior front-desk note says a claim was once sent directly to the state plan and returned with a third-party-liability message.</p>
+
+          <p><b>HPI:</b> Patient reports several months of altered bowel pattern, intermittent dark stools, and fatigue. Outside lab showed iron-deficiency anemia and positive stool blood test. Family history includes colon cancer in a maternal uncle. Patient denies weight loss. Provider documents: <span class="evidence warn" data-evidence="ruleout">R/O malignant neoplasm of ascending colon pending full clinical correlation</span>.</p>
+
+          <p><b>Procedure history:</b> Colonoscopy last week described a friable sessile lesion in the ascending colon with partial removal and biopsy. The note also mentions diverticulosis and internal hemorrhoids. No invasive carcinoma was stated in the colonoscopy report.</p>
+
+          <p><b>Pathology addendum reviewed today:</b> Tubular adenomatous colonic neoplasm with high-grade dysplastic change. Margins indeterminate on fragmented specimen. <span class="evidence" data-evidence="behavior">The pathologist comments that the biologic behavior cannot be predicted from the submitted tissue; invasive carcinoma is not identified in the specimen</span>.</p>
+
+          <p><b>Assessment/Plan:</b> Ascending colon neoplastic lesion after biopsy; behavior not predictable on specimen. R/O malignant transformation; refer to colorectal surgery. Continue iron therapy. Repeat CBC. Discussed likely need for definitive resection depending on surgical evaluation.</p>
+
+          <p><b>Primary payer response summary received:</b> Billed charge $780. Allowed amount $420. Plan paid $300 after network adjustment. <span class="evidence" data-evidence="eob">Remaining $120 is listed as member cost-share unless another payer is responsible under coordination rules</span>. Adjustment code indicates contractual reduction, not a medical-necessity denial.</p>
         </div>
-        <div class="two-col">
-          <div class="mini-box">
-            <h4>Do not code as confirmed</h4>
-            <p>Pneumonia was only considered. It is not the confirmed diagnosis in this file.</p>
-          </div>
-          <div class="mini-box">
-            <h4>Do not confuse</h4>
-            <p>EOB language may show patient responsibility without meaning the claim was rejected or denied.</p>
-          </div>
-        </div>
+        <div class="notice">Nothing is underlined at the start. After students answer, the relevant evidence appears here.</div>
       </div>
 
       <div class="quiz-card">
-        <div class="quiz-top"><span class="pill" id="qPill">Question 1 of 6</span><span class="pill" id="liveScore">Score: 0/6</span></div>
+        <div class="quiz-top"><span class="pill" id="qPill">Question 1 of 8</span><span class="pill" id="liveScore">Score: 0/8</span></div>
         <div class="qtext" id="qText"></div>
         <div class="options" id="options"></div>
         <div class="feedback" id="feedback"></div>
+        <div class="teach-bank" id="teachBank"></div>
+        <div class="teach-text" id="teachText"></div>
         <div class="mini-actions">
           <button class="primary" id="checkBtn" onclick="checkAnswer()">Check Answer</button>
           <button class="secondary" id="nextBtn" onclick="nextQuestion()" disabled>Next Question</button>
@@ -238,97 +302,142 @@ h2{font-size:clamp(25px,3.5vw,40px);letter-spacing:-.03em}.hint{color:var(--mute
     </div>
   </section>
 
-  <div class="footer-note">Designed for a fast review, not a full lecture. Best timing: 3–4 minutes for flashcards, 4–6 minutes for mini challenge.</div>
+  <div class="footer-note">Designed for quick review before students complete a workplace billing document, claim form, or coding exercise.</div>
   <div class="credit-line">All rights reserved. Instructional Design: Hilary Homaii</div>
 </main>
 
 <script>
 const cards = [
-  {term:'COB', color:'var(--cyan)', back:'Coordination of Benefits decides payer order when a patient has more than one active insurance plan.'},
-  {term:'Primary Payer', color:'var(--green)', back:'The primary payer processes the claim first. The secondary payer usually needs the primary payer result.'},
-  {term:'Secondary Payer', color:'var(--amber)', back:'The secondary payer may pay part of the remaining allowed amount, depending on its rules and the primary EOB.'},
-  {term:'EOB', color:'var(--rose)', back:'An Explanation of Benefits shows how the payer processed the claim: allowed amount, paid amount, adjustments, and patient responsibility.'},
-  {term:'Denial vs. Responsibility', color:'var(--purple)', back:'A denial means the payer refused payment for a reason. Patient responsibility means the claim may have processed, but the patient owes part.'},
-  {term:'Main Term', color:'var(--blue)', back:'The main term is the first lookup word in the ICD-10-CM index, usually the condition, disease, injury, or key noun.'},
-  {term:'Subterm', color:'var(--pink)', back:'A subterm narrows the main term by site, side, acute/chronic status, cause, complication, or severity.'},
-  {term:'Confirmed Diagnosis', color:'var(--orange)', back:'Only code the confirmed outpatient diagnosis. Do not code possible, suspected, rule-out, or considered diagnoses as confirmed.'}
+  {term:'COB', color:'var(--cyan)', back:'Coordination of Benefits decides payer order when the patient has more than one active plan. It prevents duplicate payment and tells the biller who receives the claim first.'},
+  {term:'EOB', color:'var(--green)', back:'Explanation of Benefits explains how the payer processed the claim: charge, allowed amount, payment, adjustment, denial reason, and remaining responsibility.'},
+  {term:'Main Term', color:'var(--amber)', back:'The main term is the condition or reason you look up first in the ICD-10-CM Alphabetic Index. Do not start with a random adjective or body part.'},
+  {term:'Subterm', color:'var(--rose)', back:'A subterm narrows the main term by site, cause, behavior, type, severity, laterality, acute/chronic status, or complication.'},
+  {term:'Neoplasm Table', color:'var(--purple)', back:'For many neoplasms, use the Neoplasm Table. First identify the site, then choose the behavior column based on documentation.'},
+  {term:'R/O Diagnosis', color:'var(--blue)', back:'R/O means rule out. In outpatient coding, do not code R/O, possible, suspected, probable, or working diagnoses as confirmed.'},
+  {term:'Behavior', color:'var(--pink)', back:'Neoplasm behavior categories are not interchangeable: malignant, benign, in situ, uncertain behavior, and unspecified behavior each mean something different.'},
+  {term:'Payer Order', color:'var(--orange)', back:'A patient’s own active employer plan is commonly primary over dependent spouse coverage. Medicaid is generally payer of last resort.'}
 ];
 
 const quiz = [
   {
-    question:'Based on the COB clue, which plan should process this claim first?',
+    question:'The note includes “R/O malignant neoplasm of ascending colon.” What should the biller do with that phrase for this outpatient encounter?',
     options:[
-      'Marcus\'s employer group plan from his current job',
-      'His spouse\'s dependent coverage as the first plan',
-      'The secondary plan before the subscriber plan',
-      'Neither plan until the patient pays the balance'
+      'Do not code the malignancy as confirmed; code only what is supported by confirmed documentation.',
+      'Code malignant neoplasm immediately because the provider mentioned the exact anatomic site.',
+      'Code carcinoma in situ because the lesion has dysplastic change and requires surgical review.',
+      'Code metastatic colon cancer because anemia and dark stools suggest advanced disease.'
     ],
     correct:0,
-    rationale:'Marcus is the employee/subscriber on his own employer plan. That plan is usually primary before the spouse\'s dependent coverage.'
+    evidence:['ruleout'],
+    teach:['Do not code as confirmed','Do not confuse'],
+    rationale:'R/O malignant neoplasm is uncertainty language. In outpatient coding, the cancer is not coded as confirmed unless the provider/pathology establishes malignancy.'
   },
   {
-    question:'What does the EOB mainly tell the biller?',
+    question:'Based on the pathology wording, which behavior category is best supported for the neoplasm question in this activity?',
     options:[
-      'How the payer processed the submitted claim',
-      'Which diagnosis the provider should document',
-      'Which symptoms the patient reported orally',
-      'How the coder should change the medical note'
+      'Uncertain behavior, because the tissue report says the biologic behavior cannot be predicted.',
+      'Malignant behavior, because colorectal surgery was requested after the biopsy addendum.',
+      'In situ behavior, because high-grade dysplasia always means carcinoma in situ coding.',
+      'Unspecified behavior, because the provider did not write an exact ICD-10-CM code.'
     ],
     correct:0,
-    rationale:'The EOB explains claim processing: allowed amount, payer payment, adjustments, denial messages, and patient responsibility.'
+    evidence:['behavior'],
+    teach:['Behavior choice','Do not confuse'],
+    rationale:'The key wording is that biologic behavior cannot be predicted and invasive carcinoma is not identified. That supports uncertain behavior in this teaching case, not confirmed malignancy.'
   },
   {
-    question:'The EOB shows patient responsibility of $60. What is the best interpretation?',
+    question:'Which ICD-10-CM lookup path is the strongest starting point for the confirmed neoplasm finding?',
     options:[
-      'The payer processed the claim and assigned an amount to the patient',
-      'The claim was rejected before payer review was completed',
-      'The provider must code pneumonia as the main diagnosis',
-      'The secondary payer must automatically pay the entire charge'
+      'Main term Neoplasm; then table site colon, ascending; then select the documented behavior column.',
+      'Main term Malignant; then subterm colon; then choose ascending colon because R/O was written.',
+      'Main term Anemia; then subterm iron deficiency; then add cancer because stool blood was positive.',
+      'Main term Colonoscopy; then subterm biopsy; then select a diagnosis from the procedure description.'
     ],
     correct:0,
-    rationale:'Patient responsibility does not automatically mean denial. Here the EOB says the claim processed according to plan benefits.'
+    evidence:['behavior'],
+    teach:['Index clue','Main term/subterm thinking'],
+    rationale:'For a documented neoplasm, start with the main term Neoplasm, locate the site/subsite in the Neoplasm Table, then choose the behavior column supported by documentation. The index clue is revealed now, not before the question.'
   },
   {
-    question:'For ICD-10-CM index lookup, what is the best main term in this file?',
+    question:'Which pair best represents the main term and subterm logic for the confirmed neoplasm lookup?',
     options:[
-      'Bronchitis',
-      'Acute',
-      'Cough',
-      'Pneumonia'
+      'Main term: Neoplasm; subterms/site path: colon, ascending, with behavior chosen from documentation.',
+      'Main term: Ascending; subterm: colon, because the body location appears before the disease idea.',
+      'Main term: Dysplastic; subterm: high-grade, because the adjective sounds most clinically serious.',
+      'Main term: Resection; subterm: surgery, because the plan mentions possible definitive treatment.'
     ],
     correct:0,
-    rationale:'The main term is the condition itself: bronchitis. Acute is the subterm or descriptor that narrows the condition.'
+    evidence:['behavior'],
+    teach:['Main term/subterm thinking'],
+    rationale:'The disease idea is the neoplasm. Ascending colon is the site/subsite information that narrows the lookup. The procedure plan is not the diagnosis lookup path.'
   },
   {
-    question:'In the phrase acute bronchitis, which word functions as the subterm or narrowing detail?',
+    question:'The chart gives three coverages, but not in clean “primary/secondary/tertiary” order. Which order should the biller most likely use?',
     options:[
-      'Acute',
-      'Bronchitis',
-      'Patient',
-      'Coverage'
+      'Patient’s own active employer plan first; spouse/dependent commercial plan second; state medical assistance last.',
+      'State medical assistance first; spouse/dependent commercial plan second; patient’s employer plan last.',
+      'Spouse/dependent commercial plan first; state medical assistance second; patient’s own employer plan last.',
+      'Whichever card was scanned first; then the newest eligibility screen; then the oldest card on file.'
     ],
     correct:0,
-    rationale:'Bronchitis is the main term. Acute narrows the condition and helps the coder choose the more precise entry.'
+    evidence:['cob'],
+    teach:['COB thinking','Do not confuse'],
+    rationale:'The patient is the employee/subscriber on her own active employer plan, a dependent under the spouse plan, and also has state assistance. The own employer plan is most likely first, spouse/dependent plan second, and Medicaid/state assistance last.'
   },
   {
-    question:'Which diagnosis should not be coded as confirmed from this file?',
+    question:'The primary payer EOB shows allowed $420, paid $300, and $120 remaining unless another payer is responsible. What should happen next?',
     options:[
-      'Pneumonia',
-      'Acute bronchitis',
-      'Chest congestion',
-      'Cough'
+      'Use the primary EOB to bill the next responsible payer before billing the patient when secondary coverage exists.',
+      'Write off the full $120 because any balance after the first EOB becomes an automatic adjustment.',
+      'Bill the patient immediately because an EOB always means every other payer has finished processing.',
+      'Resubmit the same claim to the primary plan because any remaining balance means the claim denied.'
     ],
     correct:0,
-    rationale:'Pneumonia was considered but not confirmed. Do not code it as a confirmed outpatient diagnosis.'
+    evidence:['eob','cob'],
+    teach:['EOB thinking','COB thinking'],
+    rationale:'The EOB is needed for the secondary payer. If secondary coverage exists, the biller uses the primary EOB information to coordinate the next claim instead of assuming patient responsibility immediately.'
+  },
+  {
+    question:'Which statement is the most accurate distinction between “uncertain behavior” and “unspecified behavior” for this case?',
+    options:[
+      'Uncertain behavior means the behavior cannot be predicted; unspecified means the documentation lacks behavior detail.',
+      'Unspecified behavior means pathology predicted the behavior; uncertain means no tissue was reviewed at all.',
+      'Uncertain behavior means confirmed cancer; unspecified behavior means benign tumor with no symptoms.',
+      'Both terms mean the same thing, so the biller may choose either when the note is difficult.'
+    ],
+    correct:0,
+    evidence:['behavior'],
+    teach:['Behavior choice','Do not confuse'],
+    rationale:'Uncertain behavior is not just “we do not know because we did not read carefully.” It is a behavior category supported by documentation that behavior cannot be predicted. Unspecified means the documentation does not provide the needed behavior detail.'
+  },
+  {
+    question:'What is the biggest claim-risk mistake hidden in this case?',
+    options:[
+      'Treating rule-out malignancy as confirmed while also sending the claim to the wrong payer order.',
+      'Choosing the longest diagnosis description and sending the claim to every payer simultaneously.',
+      'Coding anemia as the only diagnosis while ignoring all payer cards and the processed EOB.',
+      'Using the pathology wording but refusing to verify the code in the Tabular List afterward.'
+    ],
+    correct:0,
+    evidence:['ruleout','cob','eob'],
+    teach:['Do not code as confirmed','COB thinking','EOB thinking'],
+    rationale:'The dangerous combination is coding an unconfirmed cancer diagnosis and mishandling payer order. A strong biller protects the claim by separating confirmed documentation from R/O language and using COB/EOB logic.'
   }
 ];
 
-let currentPage = 1;
-let currentQ = 0;
-let selected = null;
-let checked = false;
-let score = 0;
+const teachingText = {
+  'Do not code as confirmed':'Do not code outpatient diagnoses documented as R/O, possible, suspected, probable, questionable, differential, working diagnosis, or pending confirmation as confirmed. Code to the highest degree of certainty documented for that encounter.',
+  'Do not confuse':'Do not let serious language trick you. “R/O malignant,” “refer to oncology/surgery,” “high-grade,” “family history,” and “positive test” can support concern, but they do not automatically confirm malignant neoplasm.',
+  'Behavior choice':'For neoplasms, behavior matters. Malignant, benign, in situ, uncertain behavior, and unspecified behavior are not the same. Match the behavior to the documentation, then verify in the Tabular List.',
+  'Index clue':'Index clue revealed after the answer: for a documented neoplasm, start with the main term “Neoplasm,” use the Neoplasm Table, locate the site/subsite, then choose the behavior column.',
+  'Main term/subterm thinking':'Main term is the disease idea or reason being coded. Subterms narrow it. In this case, “neoplasm” is the main term; colon/ascending colon narrows the site; behavior comes from documentation.',
+  'COB thinking':'Do not list payers by card order. Ask: Is the patient the subscriber or dependent? Is the plan active? Is there Medicare? Is Medicaid/state assistance involved? Medicaid is generally last after other liable coverage.',
+  'EOB thinking':'An EOB does not always mean “bill the patient now.” It tells you how the payer processed the claim and what remains. If secondary coverage exists, the primary EOB helps bill the next payer.'
+};
+
+let currentQ = 0, selected = null, checked = false, score = 0;
 let answered = Array(quiz.length).fill(false);
+let currentOptions = [];
 
 function buildCards(){
   const grid = document.getElementById('cardGrid');
@@ -355,7 +464,6 @@ function flipCard(el){
 }
 
 function showPage(n){
-  currentPage = n;
   document.getElementById('hero').style.display = 'none';
   document.getElementById('page1').classList.toggle('active', n===1);
   document.getElementById('page2').classList.toggle('active', n===2);
@@ -364,7 +472,6 @@ function showPage(n){
   updateProgress();
   window.scrollTo({top:0,behavior:'smooth'});
 }
-
 function startSprint(){showPage(1)}
 
 function updateProgress(){
@@ -377,6 +484,15 @@ function updateProgress(){
   document.getElementById('progressLabel').textContent = pct + '%';
 }
 
+function revealPartnerAnswer(i){
+  const answer = document.getElementById('partnerAnswer' + i);
+  if(answer) answer.classList.toggle('show');
+}
+function togglePartnerNext(i, box){
+  const next = document.getElementById('partnerNext' + i);
+  if(next) next.classList.toggle('show', box.checked);
+}
+
 function shuffleOptions(q){
   const mixed = q.options.map((text,index)=>({text,index}));
   for(let i=mixed.length-1;i>0;i--){
@@ -386,17 +502,30 @@ function shuffleOptions(q){
   return mixed;
 }
 
-let currentOptions = [];
+function clearEvidence(){
+  document.querySelectorAll('.evidence').forEach(el => el.classList.remove('revealed'));
+}
+function revealEvidence(keys){
+  clearEvidence();
+  keys.forEach(k => {
+    document.querySelectorAll(`.evidence[data-evidence="${k}"]`).forEach(el => el.classList.add('revealed'));
+  });
+}
 function renderQuestion(){
   const q = quiz[currentQ];
   selected = null;
   checked = false;
   currentOptions = shuffleOptions(q);
+  clearEvidence();
   document.getElementById('qPill').textContent = `Question ${currentQ+1} of ${quiz.length}`;
   document.getElementById('liveScore').textContent = `Score: ${score}/${quiz.length}`;
   document.getElementById('qText').textContent = q.question;
   document.getElementById('feedback').className = 'feedback';
   document.getElementById('feedback').innerHTML = '';
+  document.getElementById('teachBank').className = 'teach-bank';
+  document.getElementById('teachBank').innerHTML = '';
+  document.getElementById('teachText').className = 'teach-text';
+  document.getElementById('teachText').innerHTML = '';
   document.getElementById('checkBtn').disabled = false;
   document.getElementById('nextBtn').disabled = true;
   document.getElementById('resultsBtn').classList.add('hidden');
@@ -423,22 +552,36 @@ function checkAnswer(){
   const isCorrect = selectedOriginalIndex === q.correct;
   if(isCorrect && !answered[currentQ]) score++;
   answered[currentQ] = true;
+
   document.querySelectorAll('.option').forEach((b,idx)=>{
     const originalIndex = currentOptions[idx].index;
     b.disabled = true;
     if(originalIndex === q.correct) b.classList.add('correct');
     if(idx === selected && !isCorrect) b.classList.add('wrong');
   });
+
+  revealEvidence(q.evidence || []);
   document.getElementById('feedback').className = 'feedback show';
   document.getElementById('feedback').innerHTML = `<b>${isCorrect ? 'Correct.' : 'Not quite.'}</b> ${q.rationale}`;
   document.getElementById('liveScore').textContent = `Score: ${score}/${quiz.length}`;
   document.getElementById('checkBtn').disabled = true;
+
+  const bank = document.getElementById('teachBank');
+  bank.className = 'teach-bank show';
+  bank.innerHTML = (q.teach || []).map(t => `<button class="teach-btn" onclick="showTeach('${t.replace(/'/g,"\\'")}')">${t}</button>`).join('');
+
   if(currentQ < quiz.length-1){
     document.getElementById('nextBtn').disabled = false;
   }else{
     document.getElementById('resultsBtn').classList.remove('hidden');
   }
   updateProgress();
+}
+
+function showTeach(key){
+  const box = document.getElementById('teachText');
+  box.className = 'teach-text show';
+  box.innerHTML = `<b>${key}:</b> ${teachingText[key] || ''}`;
 }
 
 function nextQuestion(){
@@ -450,9 +593,9 @@ function nextQuestion(){
 
 function showResults(){
   const pct = Math.round((score/quiz.length)*100);
-  let status = 'Review Before Claim', cls = 'review', message = 'Students need a quick reteach before independent claim completion.';
-  if(score >= 5){status = 'Ready'; cls = 'ready'; message = 'Students are ready to move into the workplace claim or EOB task.';}
-  else if(score === 4){status = 'Almost Ready'; cls = 'almost'; message = 'Students can continue, but review the missed idea first.';}
+  let status = 'Review Before Claim', cls = 'review', message = 'Students need reteaching before independent coding and payer sequencing.';
+  if(score >= 7){status = 'Ready for Claim Work'; cls = 'ready'; message = 'Students are ready to move into a claim form, workplace document, or CMS-1500 activity.';}
+  else if(score >= 5){status = 'Almost Ready'; cls = 'almost'; message = 'Students can continue, but review the missed concepts first.';}
   const box = document.getElementById('resultBox');
   box.className = 'result-box show';
   box.innerHTML = `
@@ -460,27 +603,20 @@ function showResults(){
     <div class="status ${cls}">${status}</div>
     <p class="hint">${message}</p>
     <ul class="small-list">
-      <li>Before sending a claim, determine payer order through COB.</li>
-      <li>Before billing the patient, read the EOB carefully.</li>
-      <li>Before choosing an ICD-10-CM code, start with the main term and narrow with subterms.</li>
+      <li>Never code outpatient R/O malignancy as confirmed.</li>
+      <li>Use main term and subterm logic instead of grabbing the scariest word.</li>
+      <li>Do not assume card order equals payer order.</li>
+      <li>Use the EOB to decide the next payer or patient responsibility.</li>
     </ul>`;
   updateProgress();
 }
 
-function revealPartnerAnswer(i){
-  const answer = document.getElementById('partnerAnswer' + i);
-  if(answer) answer.classList.toggle('show');
-}
-
-function togglePartnerNext(i, box){
-  const next = document.getElementById('partnerNext' + i);
-  if(next) next.classList.toggle('show', box.checked);
-}
-
 function resetQuiz(){
-  currentQ = 0; selected = null; checked = false; score = 0; answered = Array(quiz.length).fill(false);
+  currentQ = 0; selected = null; checked = false; score = 0;
+  answered = Array(quiz.length).fill(false);
   document.getElementById('resultBox').className = 'result-box';
-  renderQuestion(); updateProgress();
+  renderQuestion();
+  updateProgress();
 }
 
 buildCards();
